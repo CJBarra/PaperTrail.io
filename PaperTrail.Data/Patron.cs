@@ -8,5 +8,8 @@ namespace PaperTrail.Data
         public string Address { get; set; }
         public string DoB { get; set; }
         public string PhoneNumber { get; set; }
+
+        // public virtual PatronCard PatronCard { get; set; }
+        // public virtual BranchOffice LocalBranchOffice { get; set; }
     }
 }

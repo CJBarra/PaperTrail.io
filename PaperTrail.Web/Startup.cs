@@ -20,11 +20,14 @@ namespace PaperTrail.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllers();
+
+            services.AddDbContext<DataContext>(options =>
+            {
+                options.UseSqlite(Configuration.GetConnectionString("DevelopmentConnection"));
+            });
             // services.AddDbContext<DataContext>(options =>
             //     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<DataContext>(options =>
-            options.UseSqlite(Configuration.GetConnectionString("DevelopmentConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

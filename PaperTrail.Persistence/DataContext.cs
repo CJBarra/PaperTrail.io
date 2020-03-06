@@ -8,16 +8,29 @@ namespace PaperTrail.Persistence
         public DataContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Value> Values { get; set; }
-        // public virtual DbSet<Book> Books { get; set; }
-        // public virtual DbSet<Video> Videos { get; set; }
-        // public virtual DbSet<Checkout> Checkouts { get; set; }
-        // public virtual DbSet<CheckoutHistory> CheckoutHistories { get; set; }
-        // public virtual DbSet<BranchOffice> BranchOffices { get; set; }
-        // public virtual DbSet<BranchHours> BranchHours { get; set; }
         public DbSet<Patron> Patrons { get; set; }
-        // public virtual DbSet<PatronCard> PatronCards { get; set; }
-        // public virtual DbSet<Status> Statuses { get; set; }
-        // public virtual DbSet<LibraryAsset> LibraryAssets { get; set; }
-        // public virtual DbSet<Hold> Holds { get; set; }
+        // public DbSet<PatronCard> PatronCards { get; set; }
+        // public DbSet<Book> Books { get; set; }
+        // public DbSet<Video> Videos { get; set; }
+        // public DbSet<Checkout> Checkouts { get; set; }
+        // public DbSet<CheckoutHistory> CheckoutHistories { get; set; }
+        // public DbSet<BranchOffice> BranchOffices { get; set; }
+        // public DbSet<BranchHours> BranchHours { get; set; }
+        // public DbSet<BranchAsset> BranchAssets { get; set; }
+        // public DbSet<Status> Statuses { get; set; }
+        // public DbSet<Hold> Holds { get; set; }
+
+
+        // Override onModelCreating method to configure Entities during migration creation.
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Value>().HasData(
+                new Value { Id = 1, Name = "Value 101" },
+                new Value { Id = 2, Name = "Value 102" },
+                new Value { Id = 3, Name = "Value 103" }
+                );
+        }
     }
 }
