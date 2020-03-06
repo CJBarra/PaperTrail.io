@@ -31,8 +31,6 @@ namespace PaperTrail.Persistence
                 new Value { Id = 2, Name = "Value 102" },
                 new Value { Id = 3, Name = "Value 103" }
                 );
-
-            // builder.Entity<Patron>(x=>x.HasKey(p=> new {p.PatronCard}))
         }
     }
 }

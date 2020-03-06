@@ -8,7 +8,6 @@ namespace PaperTrail.Data
     {
         public int Id { get; set; }
         [Required]
-        [StringLength(30, ErrorMessage = "Branch names limited to 30 characters.")]
         public string Name { get; set; }
         [Required]
         public string Address { get; set; }
