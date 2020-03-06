@@ -20,7 +20,14 @@ namespace PaperTrail.Web
                 try
                 {
                     var context = services.GetRequiredService<DataContext>();
-                    context.Database.Migrate();
+                    if (context.Database.ProviderName == "Microsoft.EntityFrameworkCore.Sqlite")
+                    {
+                        context.Database.EnsureCreated();
+                    }
+                    else
+                    {
+                        context.Database.Migrate();
+                    }
                 }
                 catch (Exception ex)
                 {

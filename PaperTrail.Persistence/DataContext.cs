@@ -9,16 +9,16 @@ namespace PaperTrail.Persistence
 
         public DbSet<Value> Values { get; set; }
         public DbSet<Patron> Patrons { get; set; }
-        // public DbSet<PatronCard> PatronCards { get; set; }
-        // public DbSet<Book> Books { get; set; }
-        // public DbSet<Video> Videos { get; set; }
-        // public DbSet<Checkout> Checkouts { get; set; }
-        // public DbSet<CheckoutHistory> CheckoutHistories { get; set; }
-        // public DbSet<BranchOffice> BranchOffices { get; set; }
-        // public DbSet<BranchHours> BranchHours { get; set; }
-        // public DbSet<BranchAsset> BranchAssets { get; set; }
-        // public DbSet<Status> Statuses { get; set; }
-        // public DbSet<Hold> Holds { get; set; }
+        public DbSet<PatronCard> PatronCards { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Video> Videos { get; set; }
+        public DbSet<Checkout> Checkouts { get; set; }
+        public DbSet<CheckoutHistory> CheckoutHistories { get; set; }
+        public DbSet<BranchOffice> BranchOffices { get; set; }
+        public DbSet<BranchHours> BranchHours { get; set; }
+        public DbSet<BranchAsset> BranchAssets { get; set; }
+        public DbSet<Status> Statuses { get; set; }
+        public DbSet<Hold> Holds { get; set; }
 
 
         // Override onModelCreating method to configure Entities during migration creation.
@@ -31,6 +31,8 @@ namespace PaperTrail.Persistence
                 new Value { Id = 2, Name = "Value 102" },
                 new Value { Id = 3, Name = "Value 103" }
                 );
+
+            // builder.Entity<Patron>(x=>x.HasKey(p=> new {p.PatronCard}))
         }
     }
 }

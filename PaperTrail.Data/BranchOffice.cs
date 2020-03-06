@@ -17,6 +17,8 @@ namespace PaperTrail.Data
         public string Description { get; set; }
         public DateTime OpenDate { get; set; }
         public string ImageUrl{get;set;}
+        
+        // ----------- Collections -----------
         public virtual IEnumerable<Patron> Patrons {get;set;}
         public virtual IEnumerable<BranchAsset> BranchAssets {get;set;}
     }
