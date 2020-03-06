@@ -1,0 +1,13 @@
+D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Persistence\bin\Debug\netcoreapp3.0\PaperTrail.Persistence.deps.json
+D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Persistence\bin\Debug\netcoreapp3.0\PaperTrail.Persistence.runtimeconfig.json
+D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Persistence\bin\Debug\netcoreapp3.0\PaperTrail.Persistence.runtimeconfig.dev.json
+D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Persistence\bin\Debug\netcoreapp3.0\PaperTrail.Persistence.dll
+D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Persistence\bin\Debug\netcoreapp3.0\PaperTrail.Persistence.pdb
+D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Persistence\bin\Debug\netcoreapp3.0\PaperTrail.Data.dll
+D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Persistence\bin\Debug\netcoreapp3.0\PaperTrail.Data.pdb
+D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Persistence\obj\Debug\netcoreapp3.0\PaperTrail.Persistence.csprojAssemblyReference.cache
+D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Persistence\obj\Debug\netcoreapp3.0\PaperTrail.Persistence.AssemblyInfoInputs.cache
+D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Persistence\obj\Debug\netcoreapp3.0\PaperTrail.Persistence.AssemblyInfo.cs
+D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Persistence\obj\Debug\netcoreapp3.0\PaperTrail.Persistence.csproj.CopyComplete
+D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Persistence\obj\Debug\netcoreapp3.0\PaperTrail.Persistence.dll
+D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Persistence\obj\Debug\netcoreapp3.0\PaperTrail.Persistence.pdb
