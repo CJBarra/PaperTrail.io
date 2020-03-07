@@ -1,0 +1,57 @@
+@model PaperTrail.Web.Models.Catalog.CatalogIndexDetail
+
+<div class="container">
+    <div class="pb-2 mt-4 mb-2 border-bottom clearfix detailHeading">
+        <h2 class="text-muted">View Item</h2>
+    </div>
+</div>
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-2">
+            <div>
+                <img class="detailImage" src="@Model.ImageUrl" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div>
+                <p id="itemTitle">@Model.Title</p>
+                <p id="itemAuthor">@Model.AuthorOrDirector</p>
+                <p id="itemStatus">@Model.Status</p>
+                <p id="itemType">@Model.Type</p>
+                <p id="itemLocation">@Model.CurrentLocation</p>
+
+                @if (Model.Status == "n/a"){
+                    <p>This item is currently unavailable for checkout.</p>
+                    <p><a class="btn btn-lg btn-outline-danger" role="button" asp-controller="Catalog" asp-action="Restock" asp-route-id="@Model.IndexId">Set as Restocked</a></p>
+                }
+
+                @if (Model.Status == "Checked Out"){
+                    <p id="itemPatron">Checked Out By: @Model.PatronName</p>
+
+                    <p><a class="btn btn-lg btn-outline-success" role="button" asp-controller="Catalog" asp-action="ReturnItem" asp-route-id="@Model.IndexId">Return</a></p>
+                    <p><a class="btn btn-lg btn-outline-warning" role="button" asp-controller="Catalog" asp-action="Hold" asp-route-id="@Model.IndexId">Reserve</a></p>
+                }
+                @if (Model.Status == "Available"){
+                    <p><a class="btn btn-lg btn-outline-info" role="button" asp-controller="Catalog" asp-action="Checkout" asp-route-id="@Model.IndexId">Checkout</a></p>
+                }
+            </div>
+        </div>
+            <div class="col-md-4 detailInfo">
+                <table>
+                    <tr>
+                        <th class="itemLabel">ISBN: </td>
+                        <td class="itemValue">@Model.ISBN</td>
+                    </tr>
+                    <tr>
+                        <th class="itemLabel">Call #: </td>
+                        <td class="itemValue">@Model.DeweyCallNumber</td>
+                    </tr>
+                    <tr>
+                        <th class="itemLabel">Replacement Cost: </td>
+                        <td class="itemValue">@Model.Cost</td>
+                    </tr>
+                </table>
+            </div>
+    </div>
+</div>

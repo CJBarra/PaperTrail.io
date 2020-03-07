@@ -34,5 +34,24 @@ namespace PaperTrail.Web.Controllers
 
             return View(model);
         }
+
+        public IActionResult Detail(int id)
+        {
+            var context = _context.GetById(id);
+            var model = new CatalogIndexDetail
+            {
+                IndexId = id,
+                Title = context.Title,
+                Year = context.Year,
+                Cost = context.Cost,
+                Status = context.Status.Name,
+                ImageUrl = context.ImageUrl,
+                AuthorOrDirector = _context.GetAuthorOrDirector(id),
+                CurrentLocation = _context.GetCurrentLocation(id).Name,
+                DeweyCallNumber = _context.GetDeweyIndex(id),
+                ISBN = _context.GetIsbn(id),
+            };
+            return View(model);
+        }
     }
 }

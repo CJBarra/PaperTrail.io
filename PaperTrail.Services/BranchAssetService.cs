@@ -73,7 +73,7 @@ namespace PaperTrail.Services
             if (_context.Books.Any(x => x.Id == id))
             {
                 return _context.Books
-                    .FirstOrDefault(x => x.Id == id).DeweyIndex;
+                    .FirstOrDefault(x => x.Id == id).ISBN.ToString();
             }
             else return "";
         }
