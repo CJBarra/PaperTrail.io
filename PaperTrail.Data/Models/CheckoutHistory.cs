@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PaperTrail.Data
+namespace PaperTrail.Data.Models
 {
     public class CheckoutHistory
     {

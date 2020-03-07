@@ -1,0 +1,35 @@
+@using PaperTrail.Web.Models.Catalog
+@model PaperTrail.Web.Models.Catalog.CatalogIndex
+
+@{ ViewData["Title"] = "Catalog Index"; }
+
+<div id="indexes">
+  <h3>Catalog</h3>
+  <div id="indexTable">
+    <table class="table table-responsive-sm" id="catalogIndexTable">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Author / Director</th>
+          <th>Dewey Call #</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model.Indexes)
+        {
+          <tr class="itemRow">
+            <td class="">
+              <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@item.Id">
+                <img src="@item.ImageUrl" alt="ImageUrl" class="imageCell">
+              </a>
+            </td>
+            <td class="">@item.Title</td>
+            <td class="">@item.AuthorOrDirector</td>
+            <td class="">@item.DeweyCallNumber</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

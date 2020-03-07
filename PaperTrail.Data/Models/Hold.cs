@@ -1,6 +1,6 @@
 using System;
 
-namespace PaperTrail.Data
+namespace PaperTrail.Data.Models
 {
     public class Hold
     {

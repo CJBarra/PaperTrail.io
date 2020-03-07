@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using PaperTrail.Data;
+using PaperTrail.Data.Models;
 
 namespace PaperTrail.Persistence
 {

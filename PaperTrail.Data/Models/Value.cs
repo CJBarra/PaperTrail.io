@@ -1,4 +1,4 @@
-namespace PaperTrail.Data
+namespace PaperTrail.Data.Models
 {
     public class Value
     {

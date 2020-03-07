@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace PaperTrail.Data
+namespace PaperTrail.Data.Models
 {
     public class PatronCard
     {
