@@ -19,7 +19,7 @@ namespace PaperTrail.Persistence.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("PaperTrail.Data.BranchAsset", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.BranchAsset", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -37,6 +37,9 @@ namespace PaperTrail.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("LocationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfCopies")
                         .HasColumnType("int");
 
                     b.Property<int>("StatusId")
@@ -60,7 +63,7 @@ namespace PaperTrail.Persistence.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("BranchAsset");
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.BranchHours", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.BranchHours", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -86,7 +89,7 @@ namespace PaperTrail.Persistence.Migrations
                     b.ToTable("BranchHours");
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.BranchOffice", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.BranchOffice", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -119,7 +122,7 @@ namespace PaperTrail.Persistence.Migrations
                     b.ToTable("BranchOffices");
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.Checkout", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.Checkout", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -147,7 +150,7 @@ namespace PaperTrail.Persistence.Migrations
                     b.ToTable("Checkouts");
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.CheckoutHistory", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.CheckoutHistory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -175,7 +178,7 @@ namespace PaperTrail.Persistence.Migrations
                     b.ToTable("CheckoutHistories");
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.Hold", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.Hold", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -200,7 +203,7 @@ namespace PaperTrail.Persistence.Migrations
                     b.ToTable("Holds");
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.Patron", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.Patron", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -208,16 +211,20 @@ namespace PaperTrail.Persistence.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DoB")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(30)")
                         .HasMaxLength(30);
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(30)")
                         .HasMaxLength(30);
 
@@ -239,7 +246,7 @@ namespace PaperTrail.Persistence.Migrations
                     b.ToTable("Patrons");
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.PatronCard", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.PatronCard", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -257,7 +264,7 @@ namespace PaperTrail.Persistence.Migrations
                     b.ToTable("PatronCards");
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.Status", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.Status", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -277,7 +284,7 @@ namespace PaperTrail.Persistence.Migrations
                     b.ToTable("Statuses");
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.Value", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.Value", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -309,9 +316,9 @@ namespace PaperTrail.Persistence.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.Book", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.Book", b =>
                 {
-                    b.HasBaseType("PaperTrail.Data.BranchAsset");
+                    b.HasBaseType("PaperTrail.Data.Models.BranchAsset");
 
                     b.Property<string>("Author")
                         .IsRequired()
@@ -327,9 +334,9 @@ namespace PaperTrail.Persistence.Migrations
                     b.HasDiscriminator().HasValue("Book");
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.Video", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.Video", b =>
                 {
-                    b.HasBaseType("PaperTrail.Data.BranchAsset");
+                    b.HasBaseType("PaperTrail.Data.Models.BranchAsset");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -338,72 +345,72 @@ namespace PaperTrail.Persistence.Migrations
                     b.HasDiscriminator().HasValue("Video");
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.BranchAsset", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.BranchAsset", b =>
                 {
-                    b.HasOne("PaperTrail.Data.BranchOffice", "Location")
+                    b.HasOne("PaperTrail.Data.Models.BranchOffice", "Location")
                         .WithMany("BranchAssets")
                         .HasForeignKey("LocationId");
 
-                    b.HasOne("PaperTrail.Data.Status", "Status")
+                    b.HasOne("PaperTrail.Data.Models.Status", "Status")
                         .WithMany()
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.BranchHours", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.BranchHours", b =>
                 {
-                    b.HasOne("PaperTrail.Data.BranchOffice", "Branch")
+                    b.HasOne("PaperTrail.Data.Models.BranchOffice", "Branch")
                         .WithMany()
                         .HasForeignKey("BranchId");
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.Checkout", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.Checkout", b =>
                 {
-                    b.HasOne("PaperTrail.Data.BranchAsset", "BranchAsset")
+                    b.HasOne("PaperTrail.Data.Models.BranchAsset", "BranchAsset")
                         .WithMany()
                         .HasForeignKey("BranchAssetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PaperTrail.Data.PatronCard", "PatronCard")
+                    b.HasOne("PaperTrail.Data.Models.PatronCard", "PatronCard")
                         .WithMany("Checkouts")
                         .HasForeignKey("PatronCardId");
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.CheckoutHistory", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.CheckoutHistory", b =>
                 {
-                    b.HasOne("PaperTrail.Data.BranchAsset", "BranchAsset")
+                    b.HasOne("PaperTrail.Data.Models.BranchAsset", "BranchAsset")
                         .WithMany()
                         .HasForeignKey("BranchAssetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PaperTrail.Data.PatronCard", "PatronCard")
+                    b.HasOne("PaperTrail.Data.Models.PatronCard", "PatronCard")
                         .WithMany()
                         .HasForeignKey("PatronCardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.Hold", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.Hold", b =>
                 {
-                    b.HasOne("PaperTrail.Data.BranchAsset", "BranchAsset")
+                    b.HasOne("PaperTrail.Data.Models.BranchAsset", "BranchAsset")
                         .WithMany()
                         .HasForeignKey("BranchAssetId");
 
-                    b.HasOne("PaperTrail.Data.PatronCard", "PatronCard")
+                    b.HasOne("PaperTrail.Data.Models.PatronCard", "PatronCard")
                         .WithMany()
                         .HasForeignKey("PatronCardId");
                 });
 
-            modelBuilder.Entity("PaperTrail.Data.Patron", b =>
+            modelBuilder.Entity("PaperTrail.Data.Models.Patron", b =>
                 {
-                    b.HasOne("PaperTrail.Data.BranchOffice", "LocalBranchOffice")
+                    b.HasOne("PaperTrail.Data.Models.BranchOffice", "LocalBranchOffice")
                         .WithMany("Patrons")
                         .HasForeignKey("LocalBranchOfficeId");
 
-                    b.HasOne("PaperTrail.Data.PatronCard", "PatronCard")
+                    b.HasOne("PaperTrail.Data.Models.PatronCard", "PatronCard")
                         .WithMany()
                         .HasForeignKey("PatronCardId");
                 });
