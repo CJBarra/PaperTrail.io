@@ -130,10 +130,6 @@ button.accept-policy {
   background: url("/images/books.jpg") bottom right 15% no-repeat #555;
 }
 
-#catalogIndexTable {
-  font-size: 1.3em;
-}
-
 #catalogIndexTable td {
   vertical-align: middle;
 }
@@ -160,7 +156,7 @@ button.accept-policy {
 
 .customTable td {
   text-align: left;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .strongTd {
@@ -185,29 +181,29 @@ button.accept-policy {
 
 .authorLabel {
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 1em;
 }
 
 .titleLabel {
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 1em;
 }
 
 #itemTitle {
-  font-size: 2.3em;
+  font-size: 2em;
 }
 
 #itemAuthor {
-  font-size: 1.6em;
+  font-size: 1.3em;
 }
 
 #itemStatus {
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 1em;
 }
 
 #itemType {
-  font-size: 1.6em;
+  font-size: 1.3em;
   color: #888;
 }
 
@@ -217,12 +213,12 @@ button.accept-policy {
 
 .itemValue {
   text-align: right;
-  font-size: 0.8em;
+  font-size: 1em;
 }
 
 .availability {
   padding-top: 20px;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .detailImage {
@@ -232,7 +228,7 @@ button.accept-policy {
 
 .detailInfo {
   padding: 10px;
-  font-size: 1.3em;
+  font-size: 1em;
   color: #555;
 }
 
@@ -247,7 +243,7 @@ button.accept-policy {
 
 .branchContact {
   padding: 12px 0 16px 0;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 #patronHasFees {
