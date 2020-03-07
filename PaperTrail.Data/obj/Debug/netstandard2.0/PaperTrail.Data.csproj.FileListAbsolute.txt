@@ -1,8 +1,0 @@
-D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Data\bin\Debug\netstandard2.0\PaperTrail.Data.deps.json
-D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Data\bin\Debug\netstandard2.0\PaperTrail.Data.dll
-D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Data\bin\Debug\netstandard2.0\PaperTrail.Data.pdb
-D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Data\obj\Debug\netstandard2.0\PaperTrail.Data.csprojAssemblyReference.cache
-D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Data\obj\Debug\netstandard2.0\PaperTrail.Data.AssemblyInfoInputs.cache
-D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Data\obj\Debug\netstandard2.0\PaperTrail.Data.AssemblyInfo.cs
-D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Data\obj\Debug\netstandard2.0\PaperTrail.Data.dll
-D:\triO Work\_VisualStudio\__Projects\PaperTrail.io\PaperTrail.Data\obj\Debug\netstandard2.0\PaperTrail.Data.pdb
