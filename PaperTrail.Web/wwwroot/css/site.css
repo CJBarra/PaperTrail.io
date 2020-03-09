@@ -249,6 +249,11 @@ button.accept-policy {
   font-weight: bold;
 }
 
+/* .reserveList {
+  display: contents !important;
+  justify-content: space-between !important;
+} */
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

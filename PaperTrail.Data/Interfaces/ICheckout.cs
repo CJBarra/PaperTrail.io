@@ -18,7 +18,7 @@ namespace PaperTrail.Data.Interfaces
         
         void AddCheckout(Checkout addCheckout); //add
         void CheckoutItem(int itemId, int patronCardId); // checkout 
-        void ReturnItem(int itemId, int patronCardId); // check in
+        void ReturnItem(int itemId); // check in
         void PlaceReservation(int itemId, int patronCardId); //place hold
         void MarkUnavailable(int itemId); // lost
         void MarkAvailable(int itemId); //found

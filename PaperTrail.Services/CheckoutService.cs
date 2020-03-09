@@ -185,7 +185,7 @@ namespace PaperTrail.Services
             _context.SaveChanges();
         }
 
-        private void UpdateItemStatus(int itemId, string v)
+        private void UpdateItemStatus(int itemId, string s)
         {
             var item = _context.BranchAssets
                 .FirstOrDefault(x => x.Id == itemId);
@@ -193,7 +193,7 @@ namespace PaperTrail.Services
             _context.Update(item);
 
             item.Status = _context.Statuses
-                .FirstOrDefault(status => status.Name == v);
+                .FirstOrDefault(status => status.Name == s);
         }
 
         private void CloseExistingCheckoutHistory(int itemId, DateTime now)
@@ -224,6 +224,7 @@ namespace PaperTrail.Services
         {
             var now = DateTime.Now;
             var item = _context.BranchAssets
+                .Include(x=>x.Status)
                 .FirstOrDefault(x => x.Id == itemId);
             var card = _context.PatronCards
                 .FirstOrDefault(x => x.Id == patronCardId);
@@ -244,7 +245,7 @@ namespace PaperTrail.Services
             _context.SaveChanges();
         }
 
-        public void ReturnItem(int itemId, int patronCardId)
+        public void ReturnItem(int itemId)
         {
             var now = DateTime.Now;
             var item = _context.BranchAssets

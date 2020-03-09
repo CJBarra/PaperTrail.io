@@ -4,7 +4,7 @@
     <div class="pb-2 mt-3 mb-2 border-bottom clearfix detailHeading">
         <h4 class="text-muted">View Item Details</h4>
     </div>
-</div>
+
 
 <div class="jumbotron">
     <div class="row">
@@ -29,12 +29,12 @@
                     }
                     @if(Model.Status == "N/A"){
                         <td>
-                            <span class="badge badge-success">@Model.Status</span>
+                            <span class="badge badge-danger">@Model.Status</span>
                         </td>
                     }
                     @if(Model.Status == "Checked Out"){
                         <td>
-                            <span class="badge badge-success">@Model.Status</span>
+                            <span class="badge badge-info">@Model.Status</span>
                         </td>
                     }
                 </tr>
@@ -62,17 +62,17 @@
                             <p id="itemPatron">Checked Out By: @Model.PatronName</p>
                         </tr>
                         <tr>
-                            <a class="btn btn-block btn-outline-success" role="button" asp-controller="Catalog" asp-action="ReturnItem" asp-route-id="@Model.IndexId">Return</a>
+                            <a class="btn btn-block btn-outline-success" role="button" asp-controller="Catalog" asp-action="ReturnCheckoutItem" asp-route-id="@Model.IndexId">Return Item</a>
                         </tr>
                         <tr>
-                            <a class="btn btn-block btn-outline-warning" role="button" asp-controller="Catalog" asp-action="ReserveItem" asp-route-id="@Model.IndexId">Reserve</a>
+                            <a class="btn btn-block btn-outline-warning" role="button" asp-controller="Catalog" asp-action="Reserve" asp-route-id="@Model.IndexId">Reserve</a>
                         </tr>
                     </table>
                 }
                 @if (Model.Status == "Available"){
                     <table>
                         <tr>
-                            <a class="btn btn-block btn-outline-info" role="button" asp-controller="Catalog" asp-action="CheckoutItem" asp-route-id="@Model.IndexId">Checkout</a>
+                            <a class="btn btn-block btn-outline-info" role="button" asp-controller="Catalog" asp-action="Checkout" asp-route-id="@Model.IndexId">Checkout</a>
                         </tr>
                     </table>
                 }
@@ -101,9 +101,9 @@
     <div class="row">
         <div class="col-md-6">
             <h4>Checkout History</h4>
-            <table class="table table-bordered table-hover table-sm">
+            <table class="table table-bordered table-hover table-sm" id="reserveList">
                 <thead>
-                    <tr>
+                    <tr class="reserveList">
                         <th>Date Loaned</th>
                         <th>Date Returned</th>
                         <th>Card Id</th>
@@ -112,7 +112,7 @@
                 <tbody>
                     @foreach (var checkout in @Model.CheckoutHistory)
                     {
-                        <tr>
+                        <tr class="reserveList">
                             <td>
                                 @checkout.CheckedOut
                             </td>
@@ -130,9 +130,9 @@
 
         <div class="col-md-6">
             <h4>Reserve List</h4>
-            <table class="table table-bordered table-hover table-sm">
+            <table class="table table-bordered table-hover table-sm" id="reserveList">
                 <thead>
-                    <tr>
+                    <tr class="reserveList">
                         <th>Reservation Placed</th>
                         <th>Patron</th>
                     </tr>
@@ -140,7 +140,7 @@
                 <tbody>
                     @foreach (var reservation in @Model.CurrentReservations)
                     {
-                        <tr>
+                        <tr class="reserveList">
                             <td>
                                 @reservation.ReservationPlaced
                             </td>
@@ -157,12 +157,8 @@
     </div>
 @* row end *@
 </div>
-
+</div>
 <style>
-    tr{
-        display: flex;
-        justify-content: space-between;
-    }
     table{
         width:100%;
     }

@@ -85,6 +85,51 @@ namespace PaperTrail.Web.Controllers
             return View(model);
         }
 
+        public IActionResult ReturnCheckoutItem(int id)
+        {
+            _checkout.ReturnItem(id);
+            return RedirectToAction("Detail", new { id = id });
 
+        }
+        public IActionResult Reserve(int id)
+        {
+            var item = _context.GetById(id);
+
+            var model = new CheckoutModel
+            {
+                ItemId = id,
+                ImageUrl = item.ImageUrl,
+                Title = item.Title,
+                PatronCardId = "",
+                IsCheckedOut = _checkout.IsCheckedOut(id),
+                ReservationCount = _checkout.GetCurrentReservations(id).Count()
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult PlaceCheckout(int itemId, int patronCardId)
+        {
+            _checkout.CheckoutItem(itemId, patronCardId);
+            return RedirectToAction("Detail", new { id = itemId });
+        }
+
+        [HttpPost]
+        public IActionResult PlaceReservation(int itemId, int patronCardId)
+        {
+            _checkout.PlaceReservation(itemId, patronCardId);
+            return RedirectToAction("Detail", new { id = itemId });
+        }
+
+        public IActionResult MarkUnavailable(int itemId)
+        {
+            _checkout.MarkUnavailable(itemId);
+            return RedirectToAction("Detail", new { id = itemId });
+        }
+        public IActionResult MarkAvailable(int itemId)
+        {
+            _checkout.MarkAvailable(itemId);
+            return RedirectToAction("Detail", new { id = itemId });
+        }
     }
 }

@@ -1,0 +1,35 @@
+@model PaperTrail.Web.Models.CheckoutModels.CheckoutModel
+
+<div class="container">
+    <div class="pb-2 mt-3 mb-2 border-bottom clearfix detailHeading">
+        <h4 class="text-muted">Reserve Catalog Item </h4>
+    </div>
+
+    
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-3">
+                <div>
+                    <p id="itemTitle">@Model.Title</p>
+                    <img class="detailImage" src="@Model.ImageUrl" />
+                </div>
+            </div>
+            <div class="col-md-9">
+                <p>There are currently @Model.ReservationCount holds in queue for this item.</p>
+                @using (Html.BeginForm("PlaceReservation", "Catalog", FormMethod.Post)){
+                    @Html.HiddenFor(a=>a.ItemId)
+                    <div>
+                        Enter your Card ID Number.
+                        @Html.TextBoxFor(a=>a.PatronCardId)
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-outline-info">Reserve Item</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div> 
+    @* jumbotron end *@
+
+
+</div>
