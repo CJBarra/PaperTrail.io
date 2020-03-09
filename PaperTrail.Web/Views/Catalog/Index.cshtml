@@ -6,27 +6,27 @@
 <div id="indexes">
   <h3>Catalog</h3>
   <div id="indexTable">
-    <table class="table table-responsive-sm" id="catalogIndexTable">
+    <table class="table table-responsive-sm table-hover">
       <thead>
         <tr>
-          <th>Image</th>
-          <th>Title</th>
-          <th>Author / Director</th>
-          <th>Dewey Call #</th>
+          <th scope="col">Image</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author / Director</th>
+          <th scope="col">Dewey Call #</th>
         </tr>
       </thead>
       <tbody>
         @foreach (var item in Model.Indexes)
         {
-          <tr class="itemRow">
-            <td class="">
+          <tr>
+            <td>
               <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@item.Id">
-                <img src="@item.ImageUrl" alt="ImageUrl" class="imageCell">
+                <img src="@item.ImageUrl" alt="ImageUrl" class="img-thumbnail">
               </a>
             </td>
-            <td class="">@item.Title</td>
-            <td class="">@item.AuthorOrDirector</td>
-            <td class="">@item.DeweyCallNumber</td>
+            <td>@item.Title</td>
+            <td>@item.AuthorOrDirector</td>
+            <td>@item.DeweyCallNumber</td>
           </tr>
         }
       </tbody>

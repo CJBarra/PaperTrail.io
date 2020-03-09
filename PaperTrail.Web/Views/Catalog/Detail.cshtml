@@ -1,8 +1,8 @@
 @model PaperTrail.Web.Models.Catalog.CatalogIndexDetail
 
 <div class="container">
-    <div class="pb-2 mt-4 mb-2 border-bottom clearfix detailHeading">
-        <h2 class="text-muted">View Item</h2>
+    <div class="pb-2 mt-3 mb-2 border-bottom clearfix detailHeading">
+        <h4 class="text-muted">View Item Details</h4>
     </div>
 </div>
 
@@ -14,46 +14,148 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div>
-                <p id="itemTitle">@Model.Title</p>
-                <p id="itemAuthor">@Model.AuthorOrDirector</p>
-                <p id="itemStatus">@Model.Status</p>
-                <p id="itemType">@Model.Type</p>
-                <p id="itemLocation">@Model.CurrentLocation</p>
+            <table>
+                <tr>
+                    <td id="itemTitle">@Model.Title</td>
+                </tr>
+                <tr>
+                    <td id="itemAuthor">@Model.AuthorOrDirector</td>
+                </tr>
+                <tr>
+                    @if(Model.Status == "Available"){
+                        <td>
+                            <span class="badge badge-success">@Model.Status</span>
+                        </td>
+                    }
+                    @if(Model.Status == "N/A"){
+                        <td>
+                            <span class="badge badge-success">@Model.Status</span>
+                        </td>
+                    }
+                    @if(Model.Status == "Checked Out"){
+                        <td>
+                            <span class="badge badge-success">@Model.Status</span>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    <td id="itemType">@Model.Type</td>
+                </tr>
+                <tr>
+                    <td id="itemLocation">@Model.CurrentLocation</td>
+                </tr>
 
-                @if (Model.Status == "n/a"){
-                    <p>This item is currently unavailable for checkout.</p>
-                    <p><a class="btn btn-lg btn-outline-danger" role="button" asp-controller="Catalog" asp-action="Restock" asp-route-id="@Model.IndexId">Set as Restocked</a></p>
+                @if (Model.Status == "N/A"){
+                    <table>
+                        <tr>
+                            <p>This item is currently unavailable for checkout.</p>
+                        </tr>
+                        <tr>
+                            <a class="btn btn-lg btn-outline-danger" role="button" asp-controller="Catalog" asp-action="RestockItem" asp-route-id="@Model.IndexId">Set as Restocked</a>
+                        </tr>
+                    </table>
                 }
 
                 @if (Model.Status == "Checked Out"){
-                    <p id="itemPatron">Checked Out By: @Model.PatronName</p>
-
-                    <p><a class="btn btn-lg btn-outline-success" role="button" asp-controller="Catalog" asp-action="ReturnItem" asp-route-id="@Model.IndexId">Return</a></p>
-                    <p><a class="btn btn-lg btn-outline-warning" role="button" asp-controller="Catalog" asp-action="Hold" asp-route-id="@Model.IndexId">Reserve</a></p>
+                    <table>
+                        <tr>
+                            <p id="itemPatron">Checked Out By: @Model.PatronName</p>
+                        </tr>
+                        <tr>
+                            <a class="btn btn-block btn-outline-success" role="button" asp-controller="Catalog" asp-action="ReturnItem" asp-route-id="@Model.IndexId">Return</a>
+                        </tr>
+                        <tr>
+                            <a class="btn btn-block btn-outline-warning" role="button" asp-controller="Catalog" asp-action="ReserveItem" asp-route-id="@Model.IndexId">Reserve</a>
+                        </tr>
+                    </table>
                 }
                 @if (Model.Status == "Available"){
-                    <p><a class="btn btn-lg btn-outline-info" role="button" asp-controller="Catalog" asp-action="Checkout" asp-route-id="@Model.IndexId">Checkout</a></p>
+                    <table>
+                        <tr>
+                            <a class="btn btn-block btn-outline-info" role="button" asp-controller="Catalog" asp-action="CheckoutItem" asp-route-id="@Model.IndexId">Checkout</a>
+                        </tr>
+                    </table>
                 }
-            </div>
+            </table>
         </div>
-            <div class="col-md-6 detailInfo">
-                <table>
-                    <tr>
-                        <th class="itemLabel">ISBN: </td>
-                        <td class="itemValue">@Model.ISBN</td>
-                    </tr>
-                    <tr>
-                        <th class="itemLabel">Call #: </td>
-                        <td class="itemValue">@Model.DeweyCallNumber</td>
-                    </tr>
-                    <tr>
-                        <th class="itemLabel">Replacement Cost: </td>
-                        <td class="itemValue">@Model.Cost</td>
-                    </tr>
-                </table>
-            </div>
+        <div class="col-md-6 detailInfo">
+            <table>
+                <tr>
+                    <th class="itemLabel">ISBN: </td>
+                    <td class="itemValue text-muted">@Model.ISBN</td>
+                </tr>
+                <tr>
+                    <th class="itemLabel">Dewey #: </td>
+                    <td class="itemValue text-muted">@Model.DeweyCallNumber</td>
+                </tr>
+                <tr>
+                    <th class="itemLabel">Replacement Cost: </td>
+                    <td class="itemValue text-muted">@Model.Cost</td>
+                </tr>
+            </table>
+        </div>
     </div>
+</div> 
+@* jumbotron end *@
+<div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Checkout History</h4>
+            <table class="table table-bordered table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th>Date Loaned</th>
+                        <th>Date Returned</th>
+                        <th>Card Id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var checkout in @Model.CheckoutHistory)
+                    {
+                        <tr>
+                            <td>
+                                @checkout.CheckedOut
+                            </td>
+                            <td>
+                                @checkout.CheckedIn
+                            </td>
+                            <td>
+                                @checkout.PatronCard.Id
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-6">
+            <h4>Reserve List</h4>
+            <table class="table table-bordered table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th>Reservation Placed</th>
+                        <th>Patron</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var reservation in @Model.CurrentReservations)
+                    {
+                        <tr>
+                            <td>
+                                @reservation.ReservationPlaced
+                            </td>
+                            <td>
+                                @reservation.PatronName
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+@* row end *@
 </div>
 
 <style>

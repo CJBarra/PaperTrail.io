@@ -2,7 +2,7 @@
 for details on configuring this project to bundle and minify static web assets. */
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 
-* {
+html {
   font-family: "Poppins", sans-serif;
 }
 
@@ -30,11 +30,14 @@ a {
   border-color: #1861ac;
 }
 
+.table td{
+  vertical-align: middle;
+}
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
-  font-size: 14px;
-}
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -190,25 +193,25 @@ button.accept-policy {
 }
 
 #itemTitle {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 #itemAuthor {
-  font-size: 1.3em;
+  font-size: 1em;
 }
 
 #itemStatus {
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1em;
 }
 
 #itemType {
-  font-size: 1.3em;
+  font-size: 1em;
   color: #888;
 }
 
 .itemLabel {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .itemValue {
@@ -224,16 +227,6 @@ button.accept-policy {
 .detailImage {
   width: 200px;
   padding-bottom: 6px;
-}
-
-.detailInfo {
-  padding: 10px;
-  font-size: 1em;
-  color: #555;
-}
-
-.detailHeading {
-  padding: 10px;
 }
 
 #branchDescription {

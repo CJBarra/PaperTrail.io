@@ -2,16 +2,19 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using PaperTrail.Data.Interfaces;
 using PaperTrail.Web.Models.Catalog;
+using PaperTrail.Web.Models.CheckoutModels;
 
 namespace PaperTrail.Web.Controllers
 {
     public class CatalogController : Controller
     {
         private IBranchAsset _context;
+        private ICheckout _checkout;
 
-        public CatalogController(IBranchAsset context)
+        public CatalogController(IBranchAsset context, ICheckout checkout)
         {
             _context = context;
+            _checkout = checkout;
         }
 
         public IActionResult Index()
@@ -38,6 +41,14 @@ namespace PaperTrail.Web.Controllers
         public IActionResult Detail(int id)
         {
             var context = _context.GetById(id);
+
+            var currentReservations = _checkout.GetCurrentReservations(id)
+                .Select(res => new CatalogIndexReservation
+                {
+                    ReservationPlaced = _checkout.GetCurrentReservationPlaced(res.Id),
+                    PatronName = _checkout.GetCurrentReservationPatronName(res.Id)
+                });
+
             var model = new CatalogIndexDetail
             {
                 IndexId = id,
@@ -50,8 +61,30 @@ namespace PaperTrail.Web.Controllers
                 CurrentLocation = _context.GetCurrentLocation(id).Name,
                 DeweyCallNumber = _context.GetDeweyIndex(id),
                 ISBN = _context.GetIsbn(id),
+                LatestCheckout = _checkout.GetLatestCheckout(id),
+                PatronName = _checkout.GetCurrentCheckoutPatron(id),
+                CurrentReservations = currentReservations,
+                CheckoutHistory = _checkout.GetCheckoutHistory(id)
+            };
+
+            return View(model);
+        }
+
+        public IActionResult Checkout(int id)
+        {
+            var item = _context.GetById(id);
+
+            var model = new CheckoutModel
+            {
+                ItemId = id,
+                ImageUrl = item.ImageUrl,
+                Title = item.Title,
+                PatronCardId = "",
+                IsCheckedOut = _checkout.IsCheckedOut(id)
             };
             return View(model);
         }
+
+
     }
 }

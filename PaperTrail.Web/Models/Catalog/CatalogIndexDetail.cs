@@ -20,12 +20,13 @@ namespace PaperTrail.Web.Models.Catalog
         public string PatronName { get; set; }
         public Checkout LatestCheckout { get; set; }
         public IEnumerable<CheckoutHistory> CheckoutHistory { get; set; }
+        public IEnumerable<CatalogIndexReservation> CurrentReservations { get; set; }
     }
 
 
-    public class CatalogIndexHold
+    public class CatalogIndexReservation
     {
         public string PatronName { get; set; }
-        public DateTime HoldPlaced { get; set; }
+        public DateTime ReservationPlaced { get; set; }
     }
 }

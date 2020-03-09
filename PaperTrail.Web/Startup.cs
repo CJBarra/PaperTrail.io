@@ -25,6 +25,7 @@ namespace PaperTrail.Web
             services.AddMvc();
             services.AddSingleton(Configuration);
             services.AddScoped<IBranchAsset, BranchAssetService>();
+            services.AddScoped<ICheckout, CheckoutService>();
             // services.AddDbContext<DataContext>(options =>
             // {
             //     options.UseSqlite(Configuration.GetConnectionString("DevelopmentConnection"));
