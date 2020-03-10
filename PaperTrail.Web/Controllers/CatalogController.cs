@@ -91,6 +91,7 @@ namespace PaperTrail.Web.Controllers
             return RedirectToAction("Detail", new { id = id });
 
         }
+        
         public IActionResult Reserve(int id)
         {
             var item = _context.GetById(id);
@@ -126,6 +127,7 @@ namespace PaperTrail.Web.Controllers
             _checkout.MarkUnavailable(itemId);
             return RedirectToAction("Detail", new { id = itemId });
         }
+        
         public IActionResult MarkAvailable(int itemId)
         {
             _checkout.MarkAvailable(itemId);

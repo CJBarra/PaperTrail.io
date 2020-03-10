@@ -8,6 +8,5 @@ namespace PaperTrail.Web.Models.CheckoutModels
         public string ImageUrl { get; set; }
         public int ReservationCount { get; set; }
         public bool IsCheckedOut { get; set; }
-
     }
 }

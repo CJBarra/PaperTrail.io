@@ -87,7 +87,6 @@ namespace PaperTrail.Services
                 .HoldPlaced;
         }
 
-
         public Checkout GetById(int checkoutId)
         {
             return GetAll().FirstOrDefault(x => x.Id == checkoutId);

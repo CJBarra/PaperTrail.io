@@ -1,35 +1,41 @@
 @using PaperTrail.Web.Models.Catalog
 @model PaperTrail.Web.Models.Catalog.CatalogIndex
 
-@{ ViewData["Title"] = "Catalog Index"; }
+@{ ViewData["Title"] = "Catalog"; }
 
-<div id="indexes">
-  <h3>Catalog</h3>
-  <div id="indexTable">
-    <table class="table table-responsive-sm table-hover">
+<div class="container">
+  <h5>Catalog</h5>
+  <div id="indexTable" class="table-responsive-sm">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th scope="col">Image</th>
           <th scope="col">Title</th>
           <th scope="col">Author / Director</th>
-          <th scope="col">Dewey Call #</th>
+          <th scope="col">Dewey Num.#</th>
         </tr>
       </thead>
       <tbody>
-        @foreach (var item in Model.Indexes)
+        @foreach (var index in Model.Indexes)
         {
           <tr>
             <td>
-              <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@item.Id">
-                <img src="@item.ImageUrl" alt="ImageUrl" class="img-thumbnail">
+              <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@index.Id">
+                <img src="@index.ImageUrl" alt="ImageUrl" class="img-thumbnail">
               </a>
             </td>
-            <td>@item.Title</td>
-            <td>@item.AuthorOrDirector</td>
-            <td>@item.DeweyCallNumber</td>
+            <td>@index.Title</td>
+            <td>@index.AuthorOrDirector</td>
+            <td>@index.DeweyCallNumber</td>
           </tr>
         }
       </tbody>
     </table>
   </div>
 </div>
+
+<style>
+  .img-thumbnail{
+    max-width: 75px;
+  }
+</style>

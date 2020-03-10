@@ -37,13 +37,7 @@ a {
 
 /* Sticky footer styles
 -------------------------------------------------- */
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
+/*
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
@@ -248,11 +242,7 @@ button.accept-policy {
   color: #2f6fc7;
   font-weight: bold;
 }
-
-/* .reserveList {
-  display: contents !important;
-  justify-content: space-between !important;
-} */
+*/
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -271,4 +261,11 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+
+@media only screen and (min-width: 768px){
+  .jumbotron .col-md-3{
+      max-width: 100%;
+  }
 }

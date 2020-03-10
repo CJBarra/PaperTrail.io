@@ -16,6 +16,7 @@ namespace PaperTrail.Services
         {
             _context = context;
         }
+        
         public void Add(BranchAsset newAsset)
         {
             _context.Add(newAsset);

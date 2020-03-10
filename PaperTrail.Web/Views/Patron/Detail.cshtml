@@ -1,0 +1,112 @@
+@model PaperTrail.Web.Models.Patron.PatronDetailModel
+
+<div class="container">
+    <div class="pb-2 mt-3 mb-2 border-bottom clearfix detailHeading">
+        <h4 class="text-muted">Patron Information</h4>
+    </div>
+
+    <div class="jumbotron bg-light">
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <h4>@Model.FullName</h4>
+                    <table class="table table-sm table-hover">
+                        <tr>
+                            <td><b>Card Id:</b> @Model.PatronCardId</td>
+                        </tr>
+                        <tr>
+                            <td><b>Address:</b> @Model.Address</td>
+                        </tr>
+                        <tr>
+                            <td><b>Phone:</b> @Model.Phone</td>
+                        </tr>
+                        <tr>
+                            <td><b>Member Since:</b> @Model.MemberSince</td>
+                        </tr>
+                        <tr>
+                            <td><b>Local Location:</b> @Model.LocalBranchOffice</td>
+                        </tr>
+                        <tr>
+                            @if(@Model.OverdueFees > 0){
+                                <td class="text-danger"><b>Fees Due:</b>$ @Model.OverdueFees</td>
+
+                            }
+                            else{
+                                <td class="text-info">No Fees Due</td>
+                            }
+                        </tr>
+                    </table>
+                </div>
+            </div> 
+            @* col 1 end *@
+
+            <div class="col-md-8">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <h4>Current Items Holding</h4>
+                        @if(@Model.ItemCheckedOut.Any())
+                        {
+                            <table class="table table-sm table-bordered table-hover">
+                                @foreach (var item in @Model.ItemCheckedOut)
+                                {
+                                    <tr>
+                                        <td>
+                                            <b>@item.BranchAsset.Title</b> - (Item ID: @item.BranchAsset.Id)
+                                        </td>
+                                        <td><b>Since:</b> @item.Since</td>
+                                        <td><b>Due:</b> @item.Until</td>
+                                    </tr>
+                                }
+                            </table>
+                        }
+                        else{
+                            <table class="table table-sm">
+                                <tr>
+                                    <td>No items currently holding.</td>
+                                </tr>
+                            </table>
+                        }
+                    </div>  
+                </div> 
+                @* col 2 end *@
+            </div>
+            @* row end *@
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <h4>Reserving Queue</h4>
+                        @if(@Model.Holds.Any())
+                        {
+                            <table class="table table-sm table-bordered table-hover">
+                                @foreach (var hold in @Model.Holds)
+                                {
+                                    <tr>
+                                        <td>
+                                            <b>@hold.BranchAsset.Title</b> - Placed: @hold.HoldPlaced.ToString("yy-dd-MM - HH:mm")
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        }
+                        else{
+                            <table class="table table-sm">
+                                <tr>
+                                    <td>No items currently being reserved.</td>
+                                </tr>
+                            </table>
+                        }
+                    </div>
+                </div> 
+                @* col 3 end *@
+            </div>
+            @* row end *@
+            </div> 
+            @* col 8 end *@
+
+
+        </div>
+    </div>
+</div>

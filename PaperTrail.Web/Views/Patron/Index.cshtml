@@ -1,0 +1,44 @@
+@model PaperTrail.Web.Models.Patron.PatronIndexModel
+
+@{ ViewData["Title"] = "Patron Index"; }
+
+
+<div class="container">
+    <div class="row pb-2 mt-3 mb-2 border-bottom clearfix ">
+        <h4 class="text-muted">Patron Index</h4>
+    </div> 
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class=" table-responsive-md">
+                    <table class="table table-bordered table-hover table-sm table-responsive-md"id="reserveList">
+                    <thead>
+                        <tr class="reserveList">
+                            <th>Profile Link</th>
+                            <th>Last Name</th>
+                            <th>First Name</th>
+                            <th>Card Id</th>
+                            <th>Overdue Fees</th>
+                            <th>Local Branch</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var patron in @Model.Patrons)
+                        {
+                            <tr class="reserveList">
+                                <td>
+                                    <a asp-controller="Patron" asp-action="Detail" asp-route-patronId="@patron.Id">(Profile)</a>
+                                </td>
+                                <td>@patron.LastName</td>
+                                <td>@patron.FirstName</td>
+                                <td>@patron.PatronCardId</td>
+                                <td>$ @patron.OverdueFees</td>
+                                <td>@patron.LocalBranchOffice</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+@* row end *@
+</div>
