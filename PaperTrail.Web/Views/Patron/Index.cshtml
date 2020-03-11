@@ -31,7 +31,7 @@
                                 <td>@patron.LastName</td>
                                 <td>@patron.FirstName</td>
                                 <td>@patron.PatronCardId</td>
-                                <td>$ @patron.OverdueFees</td>
+                                <td>@patron.OverdueFees.ToString("C")</td>
                                 <td>@patron.LocalBranchOffice</td>
                             </tr>
                         }

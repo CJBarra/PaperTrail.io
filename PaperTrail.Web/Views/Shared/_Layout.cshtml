@@ -4,52 +4,132 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>.:: PaperTrail.io - @ViewData["Title"] ::.</title>
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <!-- IonIcons -->
+        <link rel="stylesheet" href="http://code.ionicframework.com/1.3.3/css/ionic.min.css" />
+        <!-- FontAwesome-Free -->
+        <link
+            rel="stylesheet"
+            href="~/theme/plugins/fontawesome-free/css/fontawesome.min.css"
+        />
+        <!-- Theme css -->
+        <link rel="stylesheet" href="~/theme/dist/css/adminlte.min.css" />
     </head>
-    <body>
-        <div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom mb-3">
-                <div class="container">
-                    <a class="navbar-brand text-monospace font-weight-bold align-middle" asp-area="" asp-controller="Home" asp-action="Index">PaperTrail.io</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+    <body class="hold-transition sidebar-mini">
+        <div class="wrapper">
+            <!-- Navbar -->
+            <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="index3.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="#" class="nav-link">Contact</a>
+                </li>
+                </ul>
 
-                    <div class="collapse navbar-collapse flex-sm-row-reverse ml-auto">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            </nav>
+            <!-- /.navbar -->
+
+
+            <!-- Main Sidebar Container -->
+            <aside class="main-sidebar sidebar-dark-primary elevation-4">
+                <!-- Brand Logo -->
+                <a asp-controller="Home" asp-action="Index" class="brand-link">
+                    <!-- <img
+                        src="dist/img/AdminLTELogo.png"
+                        alt="AdminLTE Logo"
+                        class="brand-image img-circle elevation-3"
+                        style="opacity: .8"
+                    /> -->
+                    <span class="brand-text font-weight-light">PaperTrail.io</span>
+                </a>
+
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Sidebar user panel (optional) -->
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <!-- <div class="image">
+                            <img
+                                src="dist/img/user2-160x160.jpg"
+                                class="img-circle elevation-2"
+                                alt="User Image"
+                            />
+                        </div> -->
+                        <div class="info">
+                            <a href="#" class="d-block">Alexander Pierce</a>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Menu -->
+                    <nav class="mt-2">
+                        <ul
+                            class="nav nav-pills nav-sidebar flex-column"
+                            data-widget="treeview"
+                            role="menu"
+                            data-accordion="false"
+                        >
+                            <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+                            <li class="nav-item has-treeview menu-open">
+                                <a asp-controller="Home" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Catalog" asp-action="Index">Catalog</a>
+                                <a asp-controller="Catalog" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Catalog
+                                    </p>
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Patron" asp-action="Index">Patrons</a>
+                                <a asp-controller="Patron" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Patrons
+                                    </p>
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Branches" asp-action="Index">Branches</a>
+                                <a asp-controller="Branches" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Branches
+                                    </p>
+                                </a>
                             </li>
                         </ul>
-                    </div>
+                    </nav>
+                    <!-- /.sidebar-menu -->
                 </div>
-            </nav>
-        </div>
+                <!-- /.sidebar -->
+            </aside>
 
-        <div class="container">
-            <main role="main" class="pb-3 pl-1 pr-1">
+            <div class="content-wrapper">
                 @RenderBody()
-            </main>
-        </div>
-
-        <footer class="border-top footer bg-dark text-muted">
-            <div class="container">
-                &copy; 2020 - PaperTrail.io - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
-        </footer>
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+            <footer class="border-top footer bg-dark text-muted">
+                <div class="container">
+                    &copy; 2020 - PaperTrail.io -
+                    <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </div>
+            </footer>
+        </div>
+        <!-- /.wrapper -->
+        
+        <script src="~/theme/plugins/jquery/jquery.min.js"></script>
+        <script src="~/theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
         @RenderSection("Scripts", required: false)
     </body>

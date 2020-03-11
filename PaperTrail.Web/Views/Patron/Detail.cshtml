@@ -28,7 +28,7 @@
                         </tr>
                         <tr>
                             @if(@Model.OverdueFees > 0){
-                                <td class="text-danger"><b>Fees Due:</b>$ @Model.OverdueFees</td>
+                                <td class="text-danger"><b>Fees Due:</b>@Model.OverdueFees.ToString("C")</td>
 
                             }
                             else{
