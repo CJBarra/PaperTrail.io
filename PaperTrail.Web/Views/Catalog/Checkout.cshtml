@@ -1,34 +1,61 @@
 @model PaperTrail.Web.Models.CheckoutModels.CheckoutModel
 
-<div class="container">
-    <div class="pb-2 mt-3 mb-2 border-bottom clearfix detailHeading">
-        <h4 class="text-muted">Checkout Catalog Item </h4>
-    </div>
-
-    
-    <div class="jumbotron">
-        <div class="row">
-            <div class="col-md-3">
-                <div>
-                    <p id="itemTitle">@Model.Title</p>
-                    <img class="detailImage" src="@Model.ImageUrl" />
-                </div>
-            </div>
-            <div class="col-md-9">
-                @using (Html.BeginForm("PlaceCheckout", "Catalog", FormMethod.Post)){
-                    @Html.HiddenFor(a=>a.ItemId)
-                    <div>
-                        Enter your Card ID Number.
-                        @Html.TextBoxFor(a=>a.PatronCardId)
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-outline-success">Checkout Item</button>
-                    </div>
-                }
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h2 class="text-muted">Checkout</h2>
             </div>
         </div>
-    </div> 
-    @* jumbotron end *@
+    </div>
+</section>
 
 
-</div>
+<section class="content">
+    <div class="row">                   
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <img class="img-thumbnail" src="@Model.ImageUrl" />
+                    </div>
+                </div>
+            </div>
+        </div>
+                    
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    @using (Html.BeginForm("PlaceCheckout", "Catalog", FormMethod.Post)){
+                        @Html.HiddenFor(a => a.ItemId)
+                        <table class="table table-responsive-sm table-sm">
+                            <tr>
+                                <th>Ref. id:</th>
+                                <td class="text-right">@Model.ItemId</td>
+                            </tr>
+                            <tr>
+                                <th>Title:</th>
+                                <td class="text-right">@Model.Title</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Enter Patron Card ID:
+                                </th>
+                                <td class="float-right">
+                                    @Html.TextBoxFor(a => a.PatronCardId)
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-sm btn-block btn-outline-success">
+                                Checkout Item
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+              
+    </div>
+</section>
+    

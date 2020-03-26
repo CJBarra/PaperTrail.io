@@ -1,16 +1,34 @@
 @model PaperTrail.Web.Models.CheckoutModels.CheckoutModel
 
-<div class="container">
-    <div class="pb-2 mt-3 mb-2 border-bottom clearfix detailHeading">
-        <h4 class="text-muted">Reserve Catalog Item </h4>
+<section class="content-header">
+    <div class="content-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h2 class="text-muted">Reserve @Model.Title</h2>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item">
+                        <a asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a asp-controller="Catalog" asp-action="Index">Catalog</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a asp-controller="Catalog" asp-action="Detail">@Model.Title</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
     </div>
+</section>
 
-    
+<section class="content">
+<div class="container-fluid">
     <div class="jumbotron">
         <div class="row">
             <div class="col-md-3">
                 <div>
-                    <p id="itemTitle">@Model.Title</p>
                     <img class="detailImage" src="@Model.ImageUrl" />
                 </div>
             </div>
@@ -30,6 +48,6 @@
         </div>
     </div> 
     @* jumbotron end *@
-
-
 </div>
+<section>
+
