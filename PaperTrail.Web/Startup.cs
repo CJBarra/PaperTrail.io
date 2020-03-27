@@ -24,7 +24,8 @@ namespace PaperTrail.Web
         {
             services.AddMvc();
             services.AddSingleton(Configuration);
-            services.AddScoped<IBranchAsset, BranchAssetService>();
+            services.AddScoped<IBranchAsset, LibAssetService>();
+            services.AddScoped<IBranchOffice, LibBranchService>();
             services.AddScoped<ICheckout, CheckoutService>();
             services.AddScoped<IPatron, PatronService>();
             // services.AddDbContext<DataContext>(options =>

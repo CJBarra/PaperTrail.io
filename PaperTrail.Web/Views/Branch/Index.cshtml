@@ -1,0 +1,72 @@
+@model PaperTrail.Web.Models.Branch.BranchIndexModel
+@{
+    ViewData["Title"] = "Branches";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h3 class="text-muted">Branches</h3>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item">
+                        <a asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a asp-controller="Branch" asp-action="Index">Branches</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <!-- Card -->
+            <div class="card">
+                <div class="card-body">
+                    <!-- dataTables_wrapper -->
+                    <div class="dataTables_wrapper dt-bootstrap4">
+                        <table class="table table-bordered table-hover table-sm table-responsive-md dataTable" role="grid" id="branchList">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting" tabindex="0" aria-controls="branchList" aria-sort="ascending">Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="branchList" aria-sort="ascending">Assets In House</th>
+                                    <th class="sorting" tabindex="0" aria-controls="branchList" aria-sort="ascending">Patron Count</th>
+                                    <th class="sorting" tabindex="0" aria-controls="branchList" aria-sort="ascending">Open</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var branch in @Model.Branches)
+                                {
+                                    <tr class="sorting_1">
+                                        <td>
+                                            <a asp-controller="Branch" asp-action="Detail" asp-route-id="@branch.Id">@branch.Name</a>
+                                        </td>
+                                        <td>@branch.NumberOfAssets</td>
+                                        <td>@branch.NumberOfPatrons</td>
+                                        @if(@branch.IsOpen == false){
+                                            <td class="text-danger">Closed</td>
+                                        }else{
+                                            <td class="text-success">Open</td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- ./dataTables_wrapper -->
+                </div>
+                <!-- ./Card-Body -->
+            </div>
+            <!-- ./Card -->
+        </div>
+    </div>
+    <!-- ./Row End -->
+</section>
+<!-- ./Content End -->

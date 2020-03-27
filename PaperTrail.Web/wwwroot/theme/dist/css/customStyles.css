@@ -1,0 +1,14 @@
+.dataTables_length label, .dataTables_filter label{
+    display: inline-flex !important;
+}
+.dataTables_filter label{
+    width: 100%;
+}
+.dataTables_paginate .pagination{
+    justify-content: center;
+}
+
+
+@media only screen and (max-width: 767.98px){
+    
+}

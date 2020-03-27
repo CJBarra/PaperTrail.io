@@ -37,7 +37,7 @@
                             </li>
                             <li class="list-group-item">
                                 <b>Member Since:</b> 
-                                <a class="float-right">@Model.MemberSince.ToString("MM/dd/yyyy")</a>
+                                <a class="float-right text-truncate">@Model.MemberSince.ToString("MM/dd/yyyy")</a>
                             </li>
                             <li class="list-group-item">
                                 <b>Local Location:</b>
@@ -75,11 +75,11 @@
                                         @foreach (var item in @Model.ItemCheckedOut)
                                         {
                                             <tr>
-                                                <td>
+                                                <td class="text-truncate">
                                                     <b>@item.BranchAsset.Title</b> - (Item ID: @item.BranchAsset.Id)
                                                 </td>
-                                                <td><b>Since:</b> @item.Since</td>
-                                                <td><b>Due:</b> @item.Until</td>
+                                                <td class="text-truncate"><b>Since:</b> @item.Since</td>
+                                                <td class="text-truncate"><b>Due:</b> @item.Until</td>
                                             </tr>
                                         }
                                     </table>
@@ -113,7 +113,7 @@
                                         @foreach (var hold in @Model.Holds)
                                         {
                                             <tr>
-                                                <td>
+                                                <td class="text-truncate">
                                                     <b>@hold.BranchAsset.Title</b> - Placed: @hold.HoldPlaced.ToString("yy-dd-MM - HH:mm")
                                                 </td>
                                             </tr>

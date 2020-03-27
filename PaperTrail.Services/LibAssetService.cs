@@ -8,11 +8,11 @@ using PaperTrail.Persistence;
 
 namespace PaperTrail.Services
 {
-    public class BranchAssetService : IBranchAsset
+    public class LibAssetService : IBranchAsset
     {
         private DataContext _context;
 
-        public BranchAssetService(DataContext context)
+        public LibAssetService(DataContext context)
         {
             _context = context;
         }

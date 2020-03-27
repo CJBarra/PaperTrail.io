@@ -10,6 +10,7 @@
         <script src="https://kit.fontawesome.com/b0993e6c8e.js" crossorigin="anonymous"></script>
         <!-- Theme css -->
         <link rel="stylesheet" href="~/theme/dist/css/adminlte.min.css" />
+        <link rel="stylesheet" href="~/theme/dist/css/customStyles.css" />
     </head>
     
     <body class="hold-transition sidebar-mini">
@@ -33,7 +34,7 @@
                         <a asp-controller="Patron" asp-action="Index" class="nav-link">Patrons</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a asp-controller="Branches" asp-action="Index" class="nav-link">Branches
+                        <a asp-controller="Branch" asp-action="Index" class="nav-link">Branches
                         </a>
                     </li>
                 </ul>
@@ -84,7 +85,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a asp-controller="Branches" asp-action="Index" class="nav-link">
+                                <a asp-controller="Branch" asp-action="Index" class="nav-link">
                                     <i class="nav-icon fas fa-search-location"></i>
                                     <p>
                                         Branches

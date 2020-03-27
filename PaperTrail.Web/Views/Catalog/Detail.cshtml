@@ -132,10 +132,10 @@
                             <table class="table table-sm">
                                 <tr>
                                     <th class="itemLabel">ISBN:</th>
-                                    <td class="itemValue text-muted text-right">@Model.ISBN</td>
+                                    <td class="itemValue text-muted text-right text-truncate">@Model.ISBN</td>
                                 </tr>
                                 <tr>
-                                    <th class="itemLabel">Dewey #:</th>
+                                    <th class="itemLabel text-truncate">Dewey #:</th>
                                     <td class="itemValue text-muted text-right">
                                         @Model.DeweyCallNumber
                                     </td>
@@ -155,7 +155,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th class="itemLabel">Checked out by:</th>
+                                    <th class="itemLabel text-truncate">Checked out by:</th>
                                     <td id="itemPatron" class="text-muted text-right">
                                         @Model.PatronName
                                     </td>
@@ -192,18 +192,18 @@
                             >
                                 <thead>
                                     <tr class="reserveList">
-                                        <th>Date Loaned</th>
-                                        <th>Date Returned</th>
+                                        <th class="text-truncate">Date Loaned</th>
+                                        <th class="text-truncate">Date Returned</th>
                                         <th>Card Id</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var checkout in @Model.CheckoutHistory) {
                                     <tr class="reserveList">
-                                        <td>
+                                        <td class="text-truncate">
                                             @checkout.CheckedOut.ToString("MM/dd/yyyy")
                                         </td>
-                                        <td>
+                                        <td class="text-truncate">
                                             @checkout.CheckedIn
                                         </td>
                                         <td>
