@@ -3,43 +3,56 @@
 @{ ViewData["Title"] = "Patron Index"; }
 
 
-<div class="container">
+<section class="content">
     <div class="row pb-2 pt-2 mb-2 border-bottom clearfix" style="padding-left: 1rem;">
         <h4 class="text-muted">Patron Index</h4>
     </div> 
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class=" table-responsive-md">
-                    <table class="table table-bordered table-hover table-sm table-responsive-md"id="reserveList">
-                    <thead>
-                        <tr class="reserveList">
-                            <th>Profile Link</th>
-                            <th>Last Name</th>
-                            <th>First Name</th>
-                            <th>Card Id</th>
-                            <th>Overdue Fees</th>
-                            <th>Local Branch</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var patron in @Model.Patrons)
-                        {
-                            <tr class="reserveList">
-                                <td>
-                                    <a asp-controller="Patron" asp-action="Detail" asp-route-patronId="@patron.Id">(Profile)</a>
-                                </td>
-                                <td>@patron.LastName</td>
-                                <td>@patron.FirstName</td>
-                                <td>@patron.PatronCardId</td>
-                                <td>@patron.OverdueFees.ToString("C")</td>
-                                <td>@patron.LocalBranchOffice</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+    <div class="row">
+        <div class="col-12">
+            <!-- Card -->
+            <div class="card">
+                <div class="card-body">
+                    <!-- dataTables_wrapper -->
+                    <div class="dataTables_wrapper dt-bootstrap4">
+                        <table class="table table-bordered table-hover table-sm table-responsive-md dataTable" role="grid" id="patronList">
+                            <thead>
+                                <tr role="row">
+                                    <th>Profile Link</th>
+                                    <th class="sorting" tabindex="0" aria-controls="patronList" aria-sort="ascending">Last Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="patronList" aria-sort="ascending">First Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="patronList" aria-sort="ascending">Card Id</th>
+                                    <th class="sorting" tabindex="0" aria-controls="patronList" aria-sort="ascending">Overdue Fees</th>
+                                    <th class="sorting" tabindex="0" aria-controls="patronList" aria-sort="ascending">Local Branch</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var patron in @Model.Patrons)
+                                {
+                                    <tr class="sorting_1">
+                                        <td>
+                                            <a asp-controller="Patron" asp-action="Detail" asp-route-patronId="@patron.Id">(Profile)</a>
+                                        </td>
+                                        <td>@patron.LastName</td>
+                                        <td>@patron.FirstName</td>
+                                        <td>@patron.PatronCardId</td>
+                                        @if(@patron.OverdueFees > 0){
+                                            <td class="text-danger">@patron.OverdueFees.ToString("C")</td>
+                                        }else{
+                                            <td>@patron.OverdueFees.ToString("C")</td>
+                                        }
+                                        <td>@patron.LocalBranchOffice</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- ./dataTables_wrapper -->
+                </div>
+                <!-- ./Card-Body -->
             </div>
+            <!-- ./Card -->
         </div>
     </div>
     @* ./row_2 *@
-</div>
+</section>
 @* row end *@

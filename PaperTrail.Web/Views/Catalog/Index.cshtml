@@ -23,42 +23,43 @@
 </section>
 
 <section class="content">
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Catalog</h3>
-        </div>
-        <div class="card-body p-0 d-block">
-          <div class="dataTables_wrapper dt-bootstrap4">
-
-            <table class="table table-hover table-responsive-md dataTable" role="grid" id="catalogId">
-                <thead>
-                    <tr role="row">
-                        <th style="width: 10%;">Image</th>
-                        <th class="sorting" tabindex="0" aria-controls="catalogId" aria-sort="ascending" style="width: 20%;">Title</th>
-                        <th class="sorting" tabindex="0" aria-controls="catalogId" aria-sort="ascending" style="width: 18%;">Author / Director</th>
-                        <th class="sorting" tabindex="0" aria-controls="catalogId" aria-sort="ascending">Call Number</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var index in Model.Indexes) {
-                    <tr class="sorting_1">
-                        <td>
-                            <a
-                                asp-controller="Catalog"
-                                asp-action="Detail"
-                                asp-route-id="@index.Id"
-                            >
-                              <img src="@index.ImageUrl" alt="ImageUrl" class="img-thumbnail" />
-                            </a>
-                        </td>
-                        <td>@index.Title</td>
-                        <td>@index.AuthorOrDirector</td>
-                        <td>@index.DeweyCallNumber</td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
-          </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Catalog</h3>
+            </div>
+            <div class="card-body p-0 d-block">
+                <div class="dataTables_wrapper dt-bootstrap4">
+                    <table class="table table-hover table-responsive-md dataTable" role="grid" id="catalogId">
+                        <thead>
+                            <tr role="row">
+                                <th style="width: 10%;">Image</th>
+                                <th class="sorting" tabindex="0" aria-controls="catalogId" aria-sort="ascending" style="width: 20%;">Title</th>
+                                <th class="sorting" tabindex="0" aria-controls="catalogId" aria-sort="ascending" style="width: 18%;">Author / Director</th>
+                                <th class="sorting" tabindex="0" aria-controls="catalogId" aria-sort="ascending">Call Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var index in Model.Indexes) {
+                                <tr class="sorting_1">
+                                    <td>
+                                        <a
+                                        asp-controller="Catalog"
+                                        asp-action="Detail"
+                                        asp-route-id="@index.Id"
+                                        >
+                                        <img src="@index.ImageUrl" alt="ImageUrl" class="img-thumbnail" />
+                                    </a>
+                                    </td>
+                                    <td>@index.Title</td>
+                                    <td>@index.AuthorOrDirector</td>
+                                    <td>@index.DeweyCallNumber</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </section>

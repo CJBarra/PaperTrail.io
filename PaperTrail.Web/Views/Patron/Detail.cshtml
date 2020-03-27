@@ -1,112 +1,139 @@
 @model PaperTrail.Web.Models.Patron.PatronDetailModel
+@{ ViewData["Title"] = "Patrons | " + @Model.PatronCardId; }
 
-<div class="container">
-    <div class="pb-2 mb-2 border-bottom clearfix" style="padding-left: 1rem;">
-        <h4 class="text-muted">Patron Information</h4>
-    </div>
-
-    <div class="jumbotron bg-light">
-        <div class="row">
-            <div class="col-md-4">
-                <div>
-                    <h4>@Model.FullName</h4>
-                    <table class="table table-sm table-hover">
-                        <tr>
-                            <td><b>Card Id:</b> @Model.PatronCardId</td>
-                        </tr>
-                        <tr>
-                            <td><b>Address:</b> @Model.Address</td>
-                        </tr>
-                        <tr>
-                            <td><b>Phone:</b> @Model.Phone</td>
-                        </tr>
-                        <tr>
-                            <td><b>Member Since:</b> @Model.MemberSince</td>
-                        </tr>
-                        <tr>
-                            <td><b>Local Location:</b> @Model.LocalBranchOffice</td>
-                        </tr>
-                        <tr>
-                            @if(@Model.OverdueFees > 0){
-                                <td class="text-danger"><b>Fees Due:</b>@Model.OverdueFees.ToString("C")</td>
-
-                            }
-                            else{
-                                <td class="text-info">No Fees Due</td>
-                            }
-                        </tr>
-                    </table>
-                </div>
-            </div> 
-            @* col 1 end *@
-
-            <div class="col-md-8">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div>
-                        <h4>Current Items Holding</h4>
-                        @if(@Model.ItemCheckedOut.Any())
-                        {
-                            <table class="table table-sm table-bordered table-hover">
-                                @foreach (var item in @Model.ItemCheckedOut)
-                                {
-                                    <tr>
-                                        <td>
-                                            <b>@item.BranchAsset.Title</b> - (Item ID: @item.BranchAsset.Id)
-                                        </td>
-                                        <td><b>Since:</b> @item.Since</td>
-                                        <td><b>Due:</b> @item.Until</td>
-                                    </tr>
-                                }
-                            </table>
-                        }
-                        else{
-                            <table class="table table-sm">
-                                <tr>
-                                    <td>No items currently holding.</td>
-                                </tr>
-                            </table>
-                        }
-                    </div>  
-                </div> 
-                @* col 2 end *@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h2 class="text-muted">Patron Information</h2>
             </div>
-            @* row end *@
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div>
-                        <h4>Reserving Queue</h4>
-                        @if(@Model.Holds.Any())
-                        {
-                            <table class="table table-sm table-bordered table-hover">
-                                @foreach (var hold in @Model.Holds)
-                                {
-                                    <tr>
-                                        <td>
-                                            <b>@hold.BranchAsset.Title</b> - Placed: @hold.HoldPlaced.ToString("yy-dd-MM - HH:mm")
-                                        </td>
-                                    </tr>
-                                }
-                            </table>
-                        }
-                        else{
-                            <table class="table table-sm">
-                                <tr>
-                                    <td>No items currently being reserved.</td>
-                                </tr>
-                            </table>
-                        }
-                    </div>
-                </div> 
-                @* col 3 end *@
-            </div>
-            @* row end *@
-            </div> 
-            @* col 8 end *@
-
-
         </div>
     </div>
-</div>
+</section>
+
+<section class="content">
+        <div class="row">
+            <!-- User Card -->
+            <div class="col-md-4">
+                <div class="card card-primary card-outline">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="~/theme/dist/img/default-150x150.png" alt="user img">
+                        </div>
+                        <h4 class="profile-username text-center">@Model.FullName</h4>
+                        
+                        <ul class="list-group list-group-unbordered mb-2">
+                            <li class="list-group-item">
+                                <b>Card Id:</b> 
+                                <a class="float-right">@Model.PatronCardId</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Address:</b> 
+                                <a class="float-right">@Model.Address</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Phone:</b> 
+                                <a class="float-right">@Model.Phone</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Member Since:</b> 
+                                <a class="float-right">@Model.MemberSince.ToString("MM/dd/yyyy")</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Local Location:</b>
+                                <a class="float-right">@Model.LocalBranchOffice</a>
+                            </li>
+                            <li class="list-group-item">
+                                @if(@Model.OverdueFees > 0){
+                                    <b>Fees Due:</b>
+                                    <a class="text-danger float-right">@Model.OverdueFees.ToString("C")</a>
+                                }
+                                else{
+                                    <a class="text-info float-right">No Fees Due</a>
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> 
+            <!-- ./User Card End -->
+
+            <div class="col-md-8">
+                <!-- Item Holdings End-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- ./Card -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h5 class="card-title">Current Items Holding</h5>
+                            </div>
+
+                            <div class="card-body">
+                                @if(@Model.ItemCheckedOut.Any())
+                                {
+                                    <table class="table table-sm table-bordered table-hover">
+                                        @foreach (var item in @Model.ItemCheckedOut)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <b>@item.BranchAsset.Title</b> - (Item ID: @item.BranchAsset.Id)
+                                                </td>
+                                                <td><b>Since:</b> @item.Since</td>
+                                                <td><b>Due:</b> @item.Until</td>
+                                            </tr>
+                                        }
+                                    </table>
+                                }
+                                else{
+                                    <table class="table table-sm">
+                                        <tr>
+                                            <td>No items currently holding.</td>
+                                        </tr>
+                                    </table>
+                                }
+                            </div>
+                        </div>  
+                        <!-- ./Card End-->
+                    </div> 
+                </div>
+                <!-- ./Item Holdings End-->
+
+                <!-- ./Reservation -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Card -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h5 class="card-title">Reserving Queue</h5>
+                            </div>
+                            <div class="card-body">
+                                @if(@Model.Holds.Any())
+                                {
+                                    <table class="table table-sm table-bordered table-hover">
+                                        @foreach (var hold in @Model.Holds)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <b>@hold.BranchAsset.Title</b> - Placed: @hold.HoldPlaced.ToString("yy-dd-MM - HH:mm")
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
+                                }
+                                else{
+                                    <table class="table table-sm">
+                                        <tr>
+                                            <td>No items currently being reserved.</td>
+                                        </tr>
+                                    </table>
+                                }
+                            </div>
+                        </div>
+                        <!-- ./Card End-->
+                    </div>
+                </div>
+                <!-- ./Reservation End -->
+            </div> 
+            <!-- col 8 end -->
+        </div>
+</section>

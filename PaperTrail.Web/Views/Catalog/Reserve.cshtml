@@ -1,53 +1,49 @@
 @model PaperTrail.Web.Models.CheckoutModels.CheckoutModel
+@{ViewData["Title"] = "Catalog | Reserve"; }
 
 <section class="content-header">
     <div class="content-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h2 class="text-muted">Reserve @Model.Title</h2>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item">
-                        <a asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a asp-controller="Catalog" asp-action="Index">Catalog</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a asp-controller="Catalog" asp-action="Detail">@Model.Title</a>
-                    </li>
-                </ol>
+                <h3 class="text-muted">Reserve - @Model.Title</h3>
             </div>
         </div>
     </div>
 </section>
 
 <section class="content">
-<div class="container-fluid">
-    <div class="jumbotron">
         <div class="row">
             <div class="col-md-3">
-                <div>
-                    <img class="detailImage" src="@Model.ImageUrl" />
+                <div class="card card-info card-outline">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img class="img-thumbnail" src="@Model.ImageUrl" />
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="col-md-9">
-                <p>There are currently @Model.ReservationCount holds in queue for this item.</p>
-                @using (Html.BeginForm("PlaceReservation", "Catalog", FormMethod.Post)){
-                    @Html.HiddenFor(a=>a.ItemId)
-                    <div>
-                        Enter your Card ID Number.
-                        @Html.TextBoxFor(a=>a.PatronCardId)
+                <div class="card card-info">
+                    <div class="card-body">
+                        <table class="table table-responsive-sm table-sm mb-2">
+                            <tr>
+                                <p>There are currently @Model.ReservationCount holds in queue for this item.</p>
+                            </tr>
+                            @using (Html.BeginForm("PlaceReservation", "Catalog", FormMethod.Post)){
+                                <tr>
+                                    @Html.HiddenFor(a=>a.ItemId)
+                                    <th>Enter Patron Card Id: </th>
+                                    <td class="text-right">@Html.TextBoxFor(a => a.PatronCardId)</td>
+                                </tr>
+                            }
+                        </table>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-block btn-outline-info">Reserve Item</button>
+                        </div>
                     </div>
-                    <div>
-                        <button type="submit" class="btn btn-outline-info">Reserve Item</button>
-                    </div>
-                }
+                </div>
             </div>
         </div>
-    </div> 
-    @* jumbotron end *@
-</div>
 <section>
 

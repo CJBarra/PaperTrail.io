@@ -20,14 +20,8 @@ $(document).ready(function() {
 
 
 $(function () {
-    $('#catalogId').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": false,
-      "info": true,
-      "autoWidth": false,
-    });
+    $('#patronList').DataTable();
+    $('#catalogId').DataTable();
     $('#checkoutList').DataTable({
       "paging": true,
       "lengthChange": false,

@@ -1,53 +1,64 @@
 ﻿@{
     ViewData["Title"] = "Home";
 }
-
-<div class="text-center">
-    <h1 class="display-5">Welcome</h1>
-</div>
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="d-flex flex-wrap" style="margin-bottom: 8rem;">
-            <div class="col-sm-4">
-                <div class="card" style="padding: 5px;">
-                    <img src="/images/catalog_card.jpg" alt="catalog img" class="card-img">
-                    <div class="card-img-overlay card__overlay-text">
-                        <h3 class="card-title">
-                            <a asp-controller="Catalog" asp-action="Index" style="color: #fff;">Catalog</a>
-                        </h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card" style="padding: 5px;">
-                    <img src="/images/patrons_card.jpg" alt="patron img" class="card-img">
-                    <div class="card-img-overlay card__overlay-text">
-                        <h3 class="card-title">
-                            <a asp-controller="Patron" asp-action="Index" style="color: #fff;">Patrons</a>
-                        </h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card" style="padding: 5px;">
-                    <img src="/images/branches_card.jpg" alt="branch img" class="card-img">
-                    <div class="card-img-overlay card__overlay-text">
-                        <h3 class="card-title text-center">
-                            <a asp-controller="Branches" asp-action="Index" style="color: #fff;">Branches</a>
-                        </h3>
-                    </div>
-                </div>
-            </div>
-        
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="text-center">
+            <h1 class="display-5">Welcome</h1>
         </div>
     </div>
-</div>
+</section>
+
+<section class="content">
+        <div class="row justify-content-center">
+            <div class="d-flex flex-wrap" style="margin-bottom: 8rem;">
+                <!-- Catalog Card -->
+                <div class="col-sm-4">
+                    <div class="card" style="padding: 5px;">
+                        <img src="/images/catalog_card.jpg" alt="catalog img" class="card-img">
+                        <div class="card-img-overlay card__overlay-text">
+                            <h3 class="card-title">
+                                <a asp-controller="Catalog" asp-action="Index" role="button" class="btn btn-block btn-primary">Catalog</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./Catalog End -->
+
+                <!-- Patrons Card -->
+                <div class="col-sm-4">
+                    <div class="card" style="padding: 5px;">
+                        <img src="/images/patrons_card.jpg" alt="patron img" class="card-img">
+                        <div class="card-img-overlay card__overlay-text">
+                            <h3 class="card-title">
+                                <a asp-controller="Patron" asp-action="Index" role="button" class="btn btn-block btn-primary">Patrons</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./Patrons Card  -->
+
+                <!-- Branches Card -->
+                <div class="col-sm-4">
+                    <div class="card" style="padding: 5px;">
+                        <img src="/images/branches_card.jpg" alt="branch img" class="card-img">
+                        <div class="card-img-overlay card__overlay-text">
+                            <h3 class="card-title text-center">
+                            <a asp-controller="Branches" asp-action="Index" role="button" class="btn btn-block btn-primary">Branches</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./Branches End -->
+            </div>
+        </div>
+        <!-- ./Row -->
+</section>
 
 <style>
     .card__overlay-text{
         display: flex;
-        align-items: center;
+        align-items: flex-end !important;
         justify-content: center;
     }
 </style>
